@@ -1,9 +1,11 @@
+import 'builder.dart';
 import 'prototype.dart';
 import 'singleton.dart';
 
 void main(List<String> args) {
   // singleton();
-  prototype();
+  // prototype();
+  builder();
 }
 
 void singleton() {
@@ -31,4 +33,20 @@ void prototype() {
   print(temp2.hashCode);
   print(temp3.hashCode);
   print('$temp1\n$temp2\n$temp3');
+}
+
+void builder() {
+  Director director = new Director();
+  IBuilder carBuilder = Car("Jeep");
+  IBuilder motoCycleBuilder = MotoCycle("Honda");
+
+  // Making Car
+  director.construct(carBuilder);
+  Product car = carBuilder.GetVehicle();
+  print(car.show());
+
+  // Making Motocycle
+  director.construct(motoCycleBuilder);
+  Product motocycle = motoCycleBuilder.GetVehicle();
+  print(motocycle.show());
 }
