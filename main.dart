@@ -1,11 +1,13 @@
 import 'builder.dart';
+import 'factory.dart';
 import 'prototype.dart';
 import 'singleton.dart';
 
 void main(List<String> args) {
   // singleton();
   // prototype();
-  builder();
+  // builder();
+  factory();
 }
 
 void singleton() {
@@ -49,4 +51,14 @@ void builder() {
   director.construct(motoCycleBuilder);
   Product motocycle = motoCycleBuilder.GetVehicle();
   print(motocycle.show());
+}
+
+void factory() {
+  IBankFactory bankFactory = BankFactory();
+
+  IBank bank = bankFactory.getBank('111111');
+  print(bank.withdraw());
+
+  IPaymentCard payment = bankFactory.getPyment('111111');
+  print(payment.getProvider());
 }
