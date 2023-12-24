@@ -1,12 +1,3 @@
-abstract class IBuilder {
-  void startUpOperations();
-  void buildBody();
-  void insertWheels();
-  void addHeadlights();
-  void endOperations();
-  Product GetVehicle();
-}
-
 class Product {
   late List<String> parts;
 
@@ -27,6 +18,15 @@ class Product {
 
     return r.toString();
   }
+}
+
+abstract class IBuilder {
+  void startUpOperations();
+  void buildBody();
+  void insertWheels();
+  void addHeadlights();
+  void endOperations();
+  Product GetVehicle();
 }
 
 class Car extends IBuilder {
@@ -114,7 +114,7 @@ class Director {
     this.builder = builder;
     builder.startUpOperations();
     builder.buildBody();
-    builder.GetVehicle();
+    // builder.GetVehicle();
     builder.addHeadlights();
     builder.endOperations();
   }
